@@ -8,10 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIWebViewDelegate {
+class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDelegate {
 
+    @IBOutlet var swipeGestureRecognizer: UIScreenEdgePanGestureRecognizer!
     @IBOutlet weak var displayView: UIWebView!
-    @IBOutlet weak var controllerView: UIWebView!
+    
+    @IBAction func reloadAction(sender: UIButton) {
+        loadDisplay()
+    }
     
     var baseUrl = "192.168.1.118:8080" //"localhost:8080" //
     
@@ -22,14 +26,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
         displayView.delegate = self
         displayView.scalesPageToFit = true
         displayView.loadRequest(request)
-    }
-    
-    func loadController() {
-//        let controllerPath = "http://" + baseUrl + "/games";
-//        let url = NSURL (string: controllerPath)
-//        let request = NSURLRequest(URL: url!)
-//        controllerView.scalesPageToFit = true
-//        controllerView.loadRequest(request)
     }
     
     override func viewDidLoad() {
@@ -43,11 +39,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        loadController()
-    }
-    
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        setHostName()
     }
     
     func setHostName() {
@@ -56,6 +47,23 @@ class ViewController: UIViewController, UIWebViewDelegate {
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         
         self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelMenu (sender: UIStoryboardSegue){
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func saveMenuChanges (sender: UIStoryboardSegue){
+        self.dismissViewControllerAnimated(true, completion: nil)
+        loadDisplay()
+    }
+    
+    @IBAction func handleLongPress(sender: UILongPressGestureRecognizer) {
+        performSegueWithIdentifier("mainMenuSegue", sender: sender)
+    }
+    
+    @IBAction func handleRightSwipe(sender:UISwipeGestureRecognizer) {
+        performSegueWithIdentifier("mainMenuSegue", sender: sender)
     }
 }
 
