@@ -13,6 +13,8 @@
 		64ADC6551A4BE93600562570 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64ADC6541A4BE93600562570 /* Images.xcassets */; };
 		64ADC6581A4BE93600562570 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64ADC6561A4BE93600562570 /* LaunchScreen.xib */; };
 		64ADC6641A4BE93600562570 /* FamilyHistoryAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ADC6631A4BE93600562570 /* FamilyHistoryAppTests.swift */; };
+		64E6B8DA1A573778004D354F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6B8D91A573778004D354F /* Menu.swift */; };
+		64E6B8DC1A573F14004D354F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E6B8DB1A573F14004D354F /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		64ADC65D1A4BE93600562570 /* FamilyHistoryAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FamilyHistoryAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64ADC6621A4BE93600562570 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64ADC6631A4BE93600562570 /* FamilyHistoryAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FamilyHistoryAppTests.swift; sourceTree = "<group>"; };
+		64E6B8D91A573778004D354F /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		64E6B8DB1A573F14004D354F /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +84,11 @@
 				64ADC64D1A4BE93600562570 /* AppDelegate.swift */,
 				64ADC64F1A4BE93600562570 /* ViewController.swift */,
 				64ADC6511A4BE93600562570 /* Main.storyboard */,
+				64E6B8D91A573778004D354F /* Menu.swift */,
 				64ADC6541A4BE93600562570 /* Images.xcassets */,
 				64ADC6561A4BE93600562570 /* LaunchScreen.xib */,
 				64ADC64B1A4BE93600562570 /* Supporting Files */,
+				64E6B8DB1A573F14004D354F /* AppConfig.swift */,
 			);
 			path = FamilyHistoryApp;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64E6B8DA1A573778004D354F /* Menu.swift in Sources */,
+				64E6B8DC1A573F14004D354F /* AppConfig.swift in Sources */,
 				64ADC6501A4BE93600562570 /* ViewController.swift in Sources */,
 				64ADC64E1A4BE93600562570 /* AppDelegate.swift in Sources */,
 			);

@@ -34,14 +34,16 @@
                             </webView>
                             <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This text shouldn't be visible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3SB-jo-njK">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="20" width="300" height="300"/>
+                                    <rect key="frame" x="724" y="728" width="300" height="40"/>
                                 </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="jrV-fe-AEH" appends="YES" id="lWw-BE-eaO"/>
+                                    <outletCollection property="gestureRecognizers" destination="UyR-Ao-hKU" appends="YES" id="ugI-1Q-2LI"/>
                                 </connections>
                             </label>
                         </subviews>
@@ -56,9 +58,6 @@
                                 <include reference="3SB-jo-njK"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Zur-rE-Ju9" appends="YES" id="7Mt-Xk-fmN"/>
-                        </connections>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -67,29 +66,25 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="displayView" destination="1lc-4i-ShR" id="9Tr-6A-Mma"/>
-                        <outlet property="swipeGestureRecognizer" destination="Zur-rE-Ju9" id="Dko-6D-5y5"/>
                         <segue destination="zZk-5Y-Wb6" kind="showDetail" identifier="mainMenuSegue" id="oJS-bk-2V1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="2" id="Zur-rE-Ju9">
-                    <rectEdge key="edges" right="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="8bC-Xf-vdC" id="bic-0r-cEP"/>
-                    </connections>
-                </screenEdgePanGestureRecognizer>
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="3" numberOfTouchesRequired="3" id="jrV-fe-AEH">
                     <connections>
-                        <action selector="handleLongPress:" destination="BYZ-38-t0r" id="QTI-9S-laH"/>
+                        <action selector="handleLongPress:" destination="BYZ-38-t0r" id="Jsm-Sq-EVT"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="UyR-Ao-hKU">
+                    <rectEdge key="edges" right="YES" bottom="YES"/>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="235.5" y="432"/>
         </scene>
         <!--Menu-->
         <scene sceneID="J9f-R0-Ihw">
             <objects>
-                <viewController title="Menu" id="zZk-5Y-Wb6" sceneMemberID="viewController">
+                <viewController title="Menu" id="zZk-5Y-Wb6" customClass="Menu" customModule="FamilyHistoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EyC-3m-BCy"/>
                         <viewControllerLayoutGuide type="bottom" id="gT9-G1-YbB"/>
@@ -116,16 +111,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="20" width="95" height="21"/>
+                                    <rect key="frame" x="16" y="28" width="149" height="21"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycY-Mi-KE3">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.118:8080" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ycY-Mi-KE3">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="119" y="17" width="183" height="30"/>
+                                    <rect key="frame" x="173" y="24" width="183" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="handleHostnameChanged:" destination="zZk-5Y-Wb6" eventType="editingDidEnd" id="FyV-1m-n9e"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pte-ct-gYx">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -139,6 +137,49 @@
                                     <segue destination="Da4-oD-sE9" kind="unwind" unwindAction="cancelMenu:" id="7HK-GT-abf"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCc-gK-poc">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="65" width="149" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ken-uO-UPE">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="102" width="149" height="21"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GO5-Nz-1fu">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="173" y="98" width="183" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="handleDisplayNameChanged:" destination="zZk-5Y-Wb6" eventType="editingDidEnd" id="539-hO-k6V"/>
+                                </connections>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="E0D-YS-ljS">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Display" enabled="NO"/>
+                                    <segment title="Controller"/>
+                                    <segment title="Split"/>
+                                </segments>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="173" y="62" width="210" height="29"/>
+                                </variation>
+                                <connections>
+                                    <action selector="handleModeChanged:" destination="zZk-5Y-Wb6" eventType="valueChanged" id="bif-89-CpE"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -147,6 +188,10 @@
                                 <exclude reference="CUk-YC-Dtp"/>
                                 <exclude reference="ycY-Mi-KE3"/>
                                 <exclude reference="pte-ct-gYx"/>
+                                <exclude reference="vCc-gK-poc"/>
+                                <exclude reference="Ken-uO-UPE"/>
+                                <exclude reference="GO5-Nz-1fu"/>
+                                <exclude reference="E0D-YS-ljS"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -155,11 +200,21 @@
                                 <include reference="CUk-YC-Dtp"/>
                                 <include reference="ycY-Mi-KE3"/>
                                 <include reference="pte-ct-gYx"/>
+                                <include reference="vCc-gK-poc"/>
+                                <include reference="Ken-uO-UPE"/>
+                                <include reference="GO5-Nz-1fu"/>
+                                <include reference="E0D-YS-ljS"/>
                             </mask>
                         </variation>
                     </view>
+                    <keyCommands/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="GO5-Nz-1fu" id="7Ti-AJ-xAx"/>
+                        <outlet property="hostnameTextField" destination="ycY-Mi-KE3" id="b6e-Iu-Zi2"/>
+                        <outlet property="modeControl" destination="E0D-YS-ljS" id="dW0-Wk-C0D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="the-x0-lcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Da4-oD-sE9" userLabel="Exit" sceneMemberID="exit"/>
