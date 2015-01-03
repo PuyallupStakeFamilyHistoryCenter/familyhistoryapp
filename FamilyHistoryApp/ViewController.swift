@@ -38,6 +38,14 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
                 var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
                 
                 cookieStorage.setCookie(cookie)
+            } else {
+                var cookie : NSHTTPCookie;
+                var cookieJar = NSHTTPCookieStorage.sharedHTTPCookieStorage() as NSHTTPCookieStorage;
+                for cookie in cookieJar.cookies! {
+                    if (cookie.name! == "display-name") {
+                        cookieJar.deleteCookie(cookie as NSHTTPCookie);
+                    }
+                }
             }
             
             let displayPath = "http://" + baseUrl! + "/" + mode!;
