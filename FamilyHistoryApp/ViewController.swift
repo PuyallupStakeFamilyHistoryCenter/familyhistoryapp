@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
         var mode = defaults.stringForKey("mode") as String?
         var displayName = defaults.stringForKey("displayName") as String?
         
-        if (baseUrl != nil && mode != nil) {
+        if (baseUrl != nil) {
             if (displayName != nil && !(displayName!.isEmpty)) {
                 //TODO Set display name cookie
                 var domain = baseUrl?.componentsSeparatedByString(":")[0]
@@ -48,6 +48,10 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
                 }
             }
             
+            if (mode == nil) {
+                mode = "split";
+            }
+            
             let displayPath = "http://" + baseUrl! + "/" + mode!;
             let url = NSURL (string:displayPath)
             let request = NSURLRequest(URL: url!)
@@ -59,6 +63,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loadDisplay()
     }
 
@@ -110,6 +115,14 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
     
     @IBAction func handleLongPress(sender: UILongPressGestureRecognizer) {
         performSegueWithIdentifier("mainMenuSegue", sender: sender)
+    }
+    
+    @IBAction func handleReloadSwipe(sender: UISwipeGestureRecognizer) {
+        loadDisplay()
+    }
+    
+    @IBAction func handleLongPressReload(sender: UILongPressGestureRecognizer) {
+        loadDisplay()
     }
     
     func saveValue(key: String, value: String) {

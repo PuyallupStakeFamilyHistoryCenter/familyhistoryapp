@@ -8,6 +8,12 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="3" numberOfTouchesRequired="3" id="jrV-fe-AEH">
+                    <connections>
+                        <action selector="handleLongPress:" destination="BYZ-38-t0r" id="Jsm-Sq-EVT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FamilyHistoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -43,11 +49,12 @@
                                 </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="jrV-fe-AEH" appends="YES" id="lWw-BE-eaO"/>
-                                    <outletCollection property="gestureRecognizers" destination="UyR-Ao-hKU" appends="YES" id="ugI-1Q-2LI"/>
+                                    <outletCollection property="gestureRecognizers" destination="0ek-sn-vtN" appends="YES" id="dof-Az-eml"/>
                                 </connections>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="3SB-jo-njK"/>
@@ -69,15 +76,11 @@
                         <segue destination="zZk-5Y-Wb6" kind="showDetail" identifier="mainMenuSegue" id="oJS-bk-2V1"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="3" numberOfTouchesRequired="3" id="jrV-fe-AEH">
+                <swipeGestureRecognizer direction="left" numberOfTouchesRequired="2" id="0ek-sn-vtN">
                     <connections>
-                        <action selector="handleLongPress:" destination="BYZ-38-t0r" id="Jsm-Sq-EVT"/>
+                        <action selector="handleReloadSwipe:" destination="BYZ-38-t0r" id="PgR-yw-15Q"/>
                     </connections>
-                </pongPressGestureRecognizer>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="UyR-Ao-hKU">
-                    <rectEdge key="edges" right="YES" bottom="YES"/>
-                </screenEdgePanGestureRecognizer>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="235.5" y="432"/>
         </scene>

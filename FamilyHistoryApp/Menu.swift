@@ -56,7 +56,8 @@ class Menu: UIViewController {
         
         var mode = getValue("mode");
         if (mode == nil) {
-            //DO NOTHING
+            modeControl.selectedSegmentIndex = 2;
+            saveValue("mode", value: "split");
         } else if (mode == "display") {
             modeControl.selectedSegmentIndex = 0;
         } else if (mode == "controller") {
