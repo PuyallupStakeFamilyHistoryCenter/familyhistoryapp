@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment version="2048" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment version="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="3" numberOfTouchesRequired="3" id="jrV-fe-AEH">
-                    <connections>
-                        <action selector="handleLongPress:" destination="BYZ-38-t0r" id="Jsm-Sq-EVT"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FamilyHistoryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -76,6 +70,12 @@
                         <segue destination="zZk-5Y-Wb6" kind="showDetail" identifier="mainMenuSegue" id="oJS-bk-2V1"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="3" numberOfTouchesRequired="3" id="jrV-fe-AEH">
+                    <connections>
+                        <action selector="handleLongPress:" destination="BYZ-38-t0r" id="Jsm-Sq-EVT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
                 <swipeGestureRecognizer direction="left" numberOfTouchesRequired="2" id="0ek-sn-vtN">
                     <connections>
                         <action selector="handleReloadSwipe:" destination="BYZ-38-t0r" id="PgR-yw-15Q"/>
@@ -175,9 +175,11 @@
                                     <segment title="Display" enabled="NO"/>
                                     <segment title="Controller"/>
                                     <segment title="Split"/>
+                                    <segment title="Presenter"/>
+                                    <segment title="Kiosk"/>
                                 </segments>
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="173" y="62" width="210" height="29"/>
+                                    <rect key="frame" x="173" y="62" width="353" height="29"/>
                                 </variation>
                                 <connections>
                                     <action selector="handleModeChanged:" destination="zZk-5Y-Wb6" eventType="valueChanged" id="bif-89-CpE"/>

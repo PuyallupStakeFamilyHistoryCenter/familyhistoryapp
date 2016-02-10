@@ -34,7 +34,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
                 cookieProperties.setObject(domain!, forKey: NSHTTPCookieDomain);
                 cookieProperties.setObject("/", forKey: NSHTTPCookiePath);
                 
-                var cookie = NSHTTPCookie(properties: cookieProperties)!;
+                var cookie = NSHTTPCookie(properties: cookieProperties as [NSObject : AnyObject])!;
                 var cookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
                 
                 cookieStorage.setCookie(cookie)
@@ -43,7 +43,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
                 var cookieJar = NSHTTPCookieStorage.sharedHTTPCookieStorage() as NSHTTPCookieStorage;
                 for cookie in cookieJar.cookies! {
                     if (cookie.name! == "display-name") {
-                        cookieJar.deleteCookie(cookie as NSHTTPCookie);
+                        cookieJar.deleteCookie(cookie as! NSHTTPCookie);
                     }
                 }
             }
@@ -58,7 +58,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
             displayView.delegate = self
             displayView.scalesPageToFit = true
             displayView.loadRequest(request)
-        }
+        } ap
     }
     
     override func viewDidLoad() {
@@ -82,7 +82,7 @@ class ViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDe
             return
         }
         
-        var httpResponse = response?.response as NSHTTPURLResponse
+        var httpResponse = response?.response as! NSHTTPURLResponse
         var statusCode = httpResponse.statusCode
         if (statusCode / 100 != 2) {
             showUnconfiguredAlert()

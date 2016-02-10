@@ -22,9 +22,9 @@ class AppConfig : NSObject, NSCoding {
     
     required init(coder decoder: NSCoder) {
         //Error here "missing argument for parameter name in call
-        self.hostname = decoder.decodeObjectForKey("hostname") as String
-        self.mode = decoder.decodeObjectForKey("mode") as String
-        self.displayName = decoder.decodeObjectForKey("displayName") as String
+        self.hostname = decoder.decodeObjectForKey("hostname") as! String
+        self.mode = decoder.decodeObjectForKey("mode") as! String
+        self.displayName = decoder.decodeObjectForKey("displayName") as! String
         super.init()
     }
     

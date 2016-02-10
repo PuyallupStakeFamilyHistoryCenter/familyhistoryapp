@@ -37,6 +37,14 @@ class Menu: UIViewController {
             mode = "split";
             break;
             
+        case 3:
+            mode = "presenter"
+            break;
+            
+        case 4:
+            mode = "kiosk"
+            break;
+            
         default:
             break;
         }
@@ -64,9 +72,11 @@ class Menu: UIViewController {
             modeControl.selectedSegmentIndex = 1;
         } else if (mode == "split") {
             modeControl.selectedSegmentIndex = 2;
+        } else if (mode == "kiosk") {
+            modeControl.selectedSegmentIndex = 3;
         }
     }
-    
+
     func saveValue(key: String, value: String) {
         let defaults = NSUserDefaults.standardUserDefaults();
         
